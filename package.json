@@ -2,8 +2,8 @@
   "name": "webpack-homework",
   "version": "1.0.0",
   "scripts": {
-    "build:dev": "NODE_ENV=development webpack mode=development",
-    "build:prod": "NODE_ENV=production webpack mode=production",
+    "build:dev": "NODE_ENV=development webpack --mode=development",
+    "build:prod": "NODE_ENV=production webpack --mode=production",
     "start": "webpack-dev-server --mode development --open"
   },
   "author": "Windrushfarer",
@@ -11,12 +11,16 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.2.3",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^2.1.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.5.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "precss": "^4.0.0",
     "style-loader": "^0.23.1",
     "svg-inline-loader": "^0.8.0",
     "uglifyjs-webpack-plugin": "^2.1.1",
@@ -29,5 +33,9 @@
     "react-dom": "^16.4.1",
     "react-loadable": "^5.4.0",
     "react-router-dom": "^4.3.1"
-  }
+  },
+  "browserslist": [
+    "last 2 version",
+    "> 1%"
+  ]
 }

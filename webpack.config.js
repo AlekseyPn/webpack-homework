@@ -4,16 +4,22 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const UglifyJSWebpackPlugin = require('uglifyjs-webpack-plugin');
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const postcssPresetEnv = require('postcss-preset-env');
+const postcssImport = require('postcss-import');
 
 const paths = {
     build: path.resolve(__dirname, 'dist'),
 }
 
+// запилить оптимизацию, сплитинг чанков, роутер, сплитинг css и postcss для него. Использовать минификацию для прода
+
 const config = {
+    // devtool: 'source-map',
     entry: './src/index.js',
     output: {
         filename: '[name].[chunkhash].js',
-        chunkFilename: '[name].[chunkhash].js'
+        chunkFilename: '[name].[chunkhash].js',
+        path: paths.build,
     },
     optimization: {
         splitChunks: {
@@ -25,41 +31,34 @@ const config = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeRedundantAttributes: true,
-                useShortDoctype: true,
-                removeEmptyAttributes: true,
-                removeStyleLinkTypeAttributes: true,
-                keepClosingSlash: true,
-                minifyJS: true,
-                minifyCSS: true,
-                minifyURLs: true,
-            }
         })
     ],
     module: {
         rules: [
             {
+                test: /\.css$/,
+                exclude: /node_modules/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1,
+                        }
+                    },
+                    'postcss-loader'
+                ]
+            },
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-laoder']
             }
         ]
-    },
-    externals: {
-        react: 'react',
     },
     devServer: {
         contentBase: paths.build,
     }
 };
 
-module.exports = (env, argv) => {
-
-}
+module.exports = config;
