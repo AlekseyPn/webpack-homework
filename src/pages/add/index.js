@@ -13,10 +13,16 @@ export default class Add extends React.PureComponent {
 
     this.state = {
       name: '',
-      description: ''
+      description: '',
     };
 
     this.onFieldChange = this.onFieldChange.bind(this);
+  }
+
+  onFieldChange(name, value) {
+    this.setState({
+      [name]: value,
+    });
   }
 
   render() {
@@ -46,11 +52,5 @@ export default class Add extends React.PureComponent {
         </form>
       </section>
     );
-  }
-
-  onFieldChange(name, value) {
-    this.setState({
-      [name]: value
-    });
   }
 }

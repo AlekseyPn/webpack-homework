@@ -1,12 +1,12 @@
 import React from 'react';
-import { NavLink as Link } from "react-router-dom";
+import { NavLink as Link } from 'react-router-dom';
 
-import Content from '../Content'
+import Content from '../Content';
 
-import logoSvg from 'svg-inline-loader!./assets/logo.svg';
-import albumsSvg from 'svg-inline-loader!./assets/albums.svg';
-import tagsSvg from 'svg-inline-loader!./assets/tags.svg';
-import addSvg from 'svg-inline-loader!./assets/add.svg';
+import logoSvg from './assets/logo.svg';
+import albumsSvg from './assets/albums.svg';
+import tagsSvg from './assets/tags.svg';
+import addSvg from './assets/add.svg';
 
 import './styles.css';
 
@@ -36,5 +36,5 @@ export default function Header() {
         </nav>
       </Content>
     </header>
-  )
+  );
 }

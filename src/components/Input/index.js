@@ -10,25 +10,29 @@ export default class Input extends React.PureComponent {
     this.onChange = this.onChange.bind(this);
   }
 
+
+  onChange(e) {
+    const { name, onChange } = this.props;
+    onChange(name, e.target.value);
+  }
+
   render() {
-    const { name, label, value, className } = this.props;
+    const {
+      name, label, value, className,
+    } = this.props;
 
     return (
       <div className={`input ${className || ''}`}>
         <label htmlFor={name} className='input__label'>{label}</label>
         <input
           className='input__input'
-          type="text"
+          type='text'
           name={name}
           id={name}
           value={value}
           onChange={this.onChange}
         />
       </div>
-    )
-  }
-
-  onChange(e) {
-    this.props.onChange(this.props.name, e.target.value);
+    );
   }
 }

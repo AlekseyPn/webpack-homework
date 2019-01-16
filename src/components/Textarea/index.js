@@ -10,8 +10,16 @@ export default class Textarea extends React.PureComponent {
     this.onChange = this.onChange.bind(this);
   }
 
+
+  onChange(e) {
+    const { name, onChange } = this.props;
+    onChange(name, e.target.value);
+  }
+
   render() {
-    const { name, label, value, className } = this.props;
+    const {
+      name, label, value, className,
+    } = this.props;
 
     return (
       <div className={`textarea ${className || ''}`}>
@@ -24,10 +32,6 @@ export default class Textarea extends React.PureComponent {
           onChange={this.onChange}
         />
       </div>
-    )
-  }
-
-  onChange(e) {
-    this.props.onChange(this.props.name, e.target.value);
+    );
   }
 }

@@ -2,10 +2,12 @@ import React from 'react';
 
 import './styles.css';
 
-import likeSvg from 'svg-inline-loader!./assets/like.svg';
+import likeSvg from './assets/like.svg';
 
 
-export default function Album({ likes, name, description, className }) {
+export default function Album({
+  likes, name, description, className,
+}) {
   return (
     <div className={`album ${className || ''}`}>
       <div className='album__head'>
@@ -19,5 +21,5 @@ export default function Album({ likes, name, description, className }) {
         {description}
       </div>
     </div>
-  )
+  );
 }

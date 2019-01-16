@@ -7,15 +7,22 @@ export default class Tag extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      checked: false
-    }
+      checked: false,
+    };
 
     this.onChange = this.onChange.bind(this);
   }
 
 
+  onChange() {
+    const { checked } = this.state;
+    this.setState({
+      checked: !checked,
+    });
+  }
+
   render() {
-    const checked = this.state.checked;
+    const { checked } = this.state;
     const { name, label, className } = this.props;
 
     return (
@@ -23,7 +30,7 @@ export default class Tag extends React.PureComponent {
         <div className='tag__label'>{label}</div>
         <input
           checked={checked}
-          type="checkbox"
+          type='checkbox'
           id={name}
           name={name}
           className='tag__input'
@@ -31,11 +38,5 @@ export default class Tag extends React.PureComponent {
         />
       </label>
     );
-  }
-
-  onChange() {
-    this.setState({
-      checked: !this.state.checked
-    });
   }
 }
