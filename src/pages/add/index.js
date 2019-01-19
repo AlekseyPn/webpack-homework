@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Title from '../../components/Title';
 import Input from '../../components/Input';
 import Textarea from '../../components/Textarea';

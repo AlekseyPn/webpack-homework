@@ -1,6 +1,6 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-
+const webpack = require('webpack')
 const buildPath = path.resolve('dist');
 
 module.exports = {
@@ -19,6 +19,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(buildPath, { root: path.resolve('../') }),
+        new webpack.ProvidePlugin({
+            React: 'react'
+        })
     ],
     module: {
         rules: [

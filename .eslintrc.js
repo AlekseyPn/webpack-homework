@@ -13,6 +13,7 @@ module.exports = {
     ],
     globals: {
         document: true,
+        React: true,
     },
     settings: {
         'import/resolver': {
